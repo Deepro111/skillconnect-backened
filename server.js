@@ -13,7 +13,7 @@ const app = express();
 const PORT = process.env.PORT || 8000;
 connectDB();
 
-const allowedOrigins = ['http://localhost:5173']; 
+const allowedOrigins = ['http://localhost:5173', 'https://skillconnect-frontend-ten.vercel.app/']; 
 
 app.use(express.json());
 app.use(cookieParser());
