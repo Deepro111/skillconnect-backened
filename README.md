@@ -80,6 +80,9 @@ AWS_SECRET_KEY=your_aws_secret_key
 AWS_BUCKET_NAME=your_s3_bucket_name
 AWS_REGION=your_aws_region
 NODE_ENV=development
+SMTP_USER=your_smtp_userid
+SMTP_PASS = smtp_password
+SENDER_EMAIL = your_email
 ```
 
 4. Start the server:
@@ -98,13 +101,20 @@ Server will start on `http://localhost:5000`
 |--------|------------------------------|----------------------------------|
 | POST   | `/api/auth/register`         | Register a new user              |
 | POST   | `/api/auth/login`            | Login user                       |
+| POST   | `/api/auth/logout`           | Logout user                      |
+| POST   | `/api/auth/send-verify-otp`  | OTP send for verification        |
+| POST   | `/api/auth/verify-account`   | verify user's account            |
+| POST   | `/api/auth/is-auth`          | check if user is authenticated   |
+| POST   | `/api/auth/send-reset-otp`   | to send password reset OTP       |
+| POST   | `/api/auth/reset-password`   | Reset Password                   |
 | POST   | `/api/manual-rooms/create`   | Create a manual room             |
 | POST   | `/api/manual-rooms/join`     | Join a manual room via Room ID   |
-| GET    | `/api/threads/:roomId`       | Get threads from a room          |
-| POST   | `/api/threads/create`        | Create a new thread              |
-| POST   | `/api/replies/create`        | Reply to a thread                |
-| POST   | `/api/notes/upload`          | Upload a note to AWS S3          |
-| DELETE | `/api/notes/delete/:noteId`  | Delete a note by ID              |
+| GET    | `/api/threads/:topicId`      | Get threads for the topic        |
+| POST   | `/api/threads/`              | Create a new thread              |
+| POST   | `/api/threads/reply`         | Reply to a thread                |
+| GET    | `/api/threads/:topicId`      | Get all threads for a topic      |
+| POST   |`/api/manual-rooms/:roomId/upload`| Upload a note to AWS S3      |
+| POST   | `/api/manual-rooms/:roomId/delete-note`| Delete a note by ID   |
 
 > More routes and docs will be added soon.
 
@@ -131,7 +141,3 @@ Make sure to include JWT tokens in headers for protected routes.
 GitHub: [@Deepro111](https://github.com/Deepro111)
 
 ---
-
-## 📄 License
-
-This project is licensed under the [MIT License](https://opensource.org/licenses/MIT).
